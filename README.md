@@ -1,6 +1,6 @@
 
 # Modash(Modern + Dash)
-Language: English | [简体中文](https://github.com/Bonway/Modash/README_CN.md)
+Language: English | [简体中文](https://github.com/Bonway/Modash/blob/master/README_CN.md)
 ## Features
 Modash makes Flutter simpler by reducing the difficulty of using arrays, numbers, objects, strings, and more.
 
