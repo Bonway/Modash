@@ -1,9 +1,8 @@
-name: loadsh
-description: "Lodash 是一个一致性、模块化、高性能的 实用工具库。"
+name: modash
+description: "Modash(Modern + Dash) is a consistent, modular, and high-performance utility library."
 version: 0.0.1
-
-repository: https://github.com/Bonway/loadsh
-homepage: https://github.com/Bonway/loadsh
+homepage: https://github.com/Bonway/Modash
+repository: https://github.com/Bonway/Modash
 
 environment:
   sdk: ^3.5.4

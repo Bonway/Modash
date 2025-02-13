@@ -1,28 +1,21 @@
-<!--
-Lodash 是一个一致性、模块化、高性能的实用工具库。
--->
-Lodash 是一个一致性、模块化、高性能的实用工具库。
 
-<!-- ## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+# Modash(Modern + Dash)
+Language: English | [简体中文](https://github.com/Bonway/Modash/README_CN.md)
+## Features
+Modash makes Flutter simpler by reducing the difficulty of using arrays, numbers, objects, strings, and more.
 
 ## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+Add dependencies to the `pubspec.yaml` file of your Flutter project:
+```yaml
+dependencies:
+  modash: latest_version
+```
+Then
+```sh
+flutter pub get
 ```
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more. -->
+## Usage
+```dart
+import 'package:modash/modash.dart';
+```
