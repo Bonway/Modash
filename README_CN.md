@@ -14,6 +14,8 @@ dependencies:
 ```sh
 flutter pub get
 ```
+## 文档说明
+[come](https://github.com/Bonway/Modash/wiki)
 
 ## 使用示例
 ```dart

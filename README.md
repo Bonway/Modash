@@ -14,8 +14,11 @@ Then
 ```sh
 flutter pub get
 ```
+## Documentation
+[come](https://github.com/Bonway/Modash/wiki)
 
 ## Usage
+
 ```dart
 import 'package:modash/modash.dart';
 ```

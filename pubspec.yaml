@@ -1,12 +1,14 @@
 name: modash
-description: "Modash(Modern + Dash) is a consistent, modular, and high-performance utility library."
-version: 0.0.2
+description: "Modash(Modern + Dash) is a consistent, modular, and high-performance utility library for Dart and Flutter."
+version: 0.0.3
 homepage: https://github.com/Bonway/Modash
 repository: https://github.com/Bonway/Modash
+documentation: https://github.com/Bonway/Modash/wiki
+publisher: Bonway
 
 environment:
   sdk: ^3.5.4
-  flutter: ">=1.17.0"
+  # flutter: ">=1.17.0"
 
 dependencies:
   flutter:
@@ -16,7 +18,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^4.0.0
-
+  test: ^1.25.7
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
