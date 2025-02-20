@@ -4,7 +4,7 @@ version: 0.0.3
 homepage: https://github.com/Bonway/Modash
 repository: https://github.com/Bonway/Modash
 documentation: https://github.com/Bonway/Modash/wiki
-publisher: Bonway
+# publisher: Bonway
 
 environment:
   sdk: ^3.5.4

@@ -5,3 +5,7 @@
 ## 0.0.2
 
 * add throttleWithTimeout
+
+## 0.0.3
+
+* add cloneDeep

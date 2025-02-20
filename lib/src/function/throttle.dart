@@ -1,23 +1,25 @@
 import 'dart:async';
 
 // 重新定义扩展，明确扩展 void Function(T)
-extension FunctionExtWithArgs<T> on void Function(T) {
+extension FunctionExtThrottleWithArgs<T> on void Function(T) {
   // 节流扩展
-  void Function(T) throttleWithTimeout({int? timeout}) {
-    final functionProxy = FunctionProxyWithArgs<T>(this, timeout: timeout);
-    return functionProxy.throttleWithTimeout;
+  void Function(T) throttle({int? timeout}) {
+    final functionProxy =
+        FunctionProxyThrottleWithArgs<T>(this, timeout: timeout);
+    return functionProxy.throttle;
   }
 }
 
-class FunctionProxyWithArgs<T> {
+class FunctionProxyThrottleWithArgs<T> {
   static final Map<String, bool> _funcThrottle = {};
 
   final void Function(T)? target;
   final int timeout;
-  FunctionProxyWithArgs(this.target, {int? timeout}) : timeout = timeout ?? 500;
+  FunctionProxyThrottleWithArgs(this.target, {int? timeout})
+      : timeout = timeout ?? 500;
 
   // 带参数的节流方法
-  void throttleWithTimeout(T args) {
+  void throttle(T args) {
     if (target == null) return;
 
     String key = target.hashCode.toString();
