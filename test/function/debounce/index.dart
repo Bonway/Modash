@@ -17,7 +17,7 @@ void main() {
       debouncedFunction();
       debouncedFunction();
 
-      await Future.delayed(Duration(milliseconds: 250));
+      await Future.delayed(const Duration(milliseconds: 250));
 
       expect(callCount, equals(1)); // 短时间内多次调用，最终只执行一次
     });
@@ -35,7 +35,7 @@ void main() {
       debouncedFunction(20);
       debouncedFunction(30);
 
-      await Future.delayed(Duration(milliseconds: 250));
+      await Future.delayed(const Duration(milliseconds: 250));
 
       expect(receivedValue, equals(30)); // 只执行最后一次传入的参数
     });
@@ -53,7 +53,7 @@ void main() {
 
       expect(callCount, equals(0)); // 确保不会立即执行
 
-      await Future.delayed(Duration(milliseconds: 250));
+      await Future.delayed(const Duration(milliseconds: 250));
 
       expect(callCount, equals(1)); // 延迟后执行
     });
@@ -68,11 +68,11 @@ void main() {
       var debouncedFunction = targetFunction.debounce(timeout: 200);
 
       debouncedFunction();
-      await Future.delayed(Duration(milliseconds: 100));
+      await Future.delayed(const Duration(milliseconds: 100));
       debouncedFunction(); // 重新调用，计时器会重置
-      await Future.delayed(Duration(milliseconds: 150));
+      await Future.delayed(const Duration(milliseconds: 150));
       debouncedFunction(); // 再次重置
-      await Future.delayed(Duration(milliseconds: 250));
+      await Future.delayed(const Duration(milliseconds: 250));
 
       expect(callCount, equals(1)); // 只有最后一次调用生效
     });
@@ -96,7 +96,7 @@ void main() {
       debouncedA();
       debouncedB();
 
-      await Future.delayed(Duration(milliseconds: 400));
+      await Future.delayed(const Duration(milliseconds: 400));
 
       expect(countA, equals(1)); // functionA 应该执行一次
       expect(countB, equals(1)); // functionB 也应该执行一次

@@ -1,8 +1,33 @@
-import 'dart:async';
+// ✅ 适用于无参数函数的节流扩展
+extension FunctionExtThrottle on void Function() {
+  void Function() throttle({int? timeout}) {
+    final functionProxy = FunctionProxyThrottle(this, timeout: timeout);
+    return functionProxy.throttle;
+  }
+}
 
-// 重新定义扩展，明确扩展 void Function(T)
+class FunctionProxyThrottle {
+  static final Map<int, int> _lastExecutionTime = {};
+
+  final void Function() target;
+  final int timeout;
+
+  FunctionProxyThrottle(this.target, {int? timeout}) : timeout = timeout ?? 500;
+
+  void throttle() {
+    int now = DateTime.now().millisecondsSinceEpoch;
+    int key = target.hashCode;
+    int lastExecution = _lastExecutionTime[key] ?? 0;
+
+    if (now - lastExecution >= timeout) {
+      target();
+      _lastExecutionTime[key] = now;
+    }
+  }
+}
+
+// ✅ 适用于带参数函数的节流扩展
 extension FunctionExtThrottleWithArgs<T> on void Function(T) {
-  // 节流扩展
   void Function(T) throttle({int? timeout}) {
     final functionProxy =
         FunctionProxyThrottleWithArgs<T>(this, timeout: timeout);
@@ -11,30 +36,22 @@ extension FunctionExtThrottleWithArgs<T> on void Function(T) {
 }
 
 class FunctionProxyThrottleWithArgs<T> {
-  static final Map<String, bool> _funcThrottle = {};
+  static final Map<int, int> _lastExecutionTime = {};
 
-  final void Function(T)? target;
+  final void Function(T) target;
   final int timeout;
+
   FunctionProxyThrottleWithArgs(this.target, {int? timeout})
       : timeout = timeout ?? 500;
 
-  // 带参数的节流方法
   void throttle(T args) {
-    if (target == null) return;
+    int now = DateTime.now().millisecondsSinceEpoch;
+    int key = target.hashCode;
+    int lastExecution = _lastExecutionTime[key] ?? 0;
 
-    String key = target.hashCode.toString();
-    bool enable = _funcThrottle[key] ?? true;
-
-    if (enable) {
-      // 执行目标函数
-      target?.call(args);
-
-      // 禁用节流，等待 timeout 后重新启用
-      _funcThrottle[key] = false;
-
-      Timer(Duration(milliseconds: timeout), () {
-        _funcThrottle[key] = true;
-      });
+    if (now - lastExecution >= timeout) {
+      target(args);
+      _lastExecutionTime[key] = now;
     }
   }
 }
