@@ -90,5 +90,22 @@ void main() {
       print("custom original: ${user.name}"); // Alice
       print("custom cloned: ${clonedUser.name}"); // Bob
     });
+
+    test('should clone Model List correctly', () {
+      var original = [
+        {'name': 'Alice', 'age': 30},
+        {'name': 'Tom', 'age': 31}
+      ];
+
+      var cloned = cloneDeep(original);
+      cloned[0]['name'] = 'Bob';
+
+      print("Map original: ${original[0]['name']}"); // Alice
+      print("Map cloned: ${cloned[0]['name']}"); // Bob
+
+      // 原始 Map 应保持不变
+      expect(original[0]['name'], 'Alice');
+      expect(cloned[0]['name'], 'Bob');
+    });
   });
 }
